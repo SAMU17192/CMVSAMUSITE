@@ -1,0 +1,21 @@
+
+.form1{
+
+    margin: 30px 30px 30px 30px;
+    border-radius: 15px;
+}
+.form2{
+
+    margin: 30px 30px 50px 170px;
+    border-radius: 15px;
+}
+.label1{
+    font-size:18px;
+    font-family: Arial;
+    color:white;
+    margin: 30px 0px 0px 125px;
+}
+.button1{
+    margin: 30px 0px 30px 125px;
+}
+
