@@ -82,8 +82,8 @@ $(document).ready(function(){
           Peças
         </a>
         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item text-light " href="#">Adicionar</a>
-          <a class="dropdown-item text-light" href="#">Verificar</a>
+          <a class="dropdown-item text-light " href="CadPeca.html">Adicionar</a>
+          <a class="dropdown-item text-light" href="ConPeca.php">Verificar</a>
         </div>
       </li>
     </ul>
