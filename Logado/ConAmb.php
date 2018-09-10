@@ -59,9 +59,8 @@
           <div class="col-md-8" style="margin-top: 4%; margin-bottom: 4%;">
             
             <h1 style="color:white;" align="center"> Consulta de Ambulância </h1>
-
           <div class="jumbotron">
-            <table class="table table-striped">
+            <table class="table table-responsive ">
               <thead>
                 <tr>
                   <th scope="col">Placa</th>
@@ -82,20 +81,64 @@
                   <td><?php echo $resultado->placa; ?></td>
                   <td><?php echo $resultado->nomeveiculo; ?></td>
                   <td><?php echo $resultado->kmveiculo; ?></td>
-                  <td><a href="editar.php?id=<?php echo $resultado->idveiculo;?>" class="btn btn-outline-success"><i class="fas fa-edit"></a></td>
-                  <td><a href="editar.php?id=<?php echo $resultado->idveiculo;?>" class="btn btn-outline-danger"><i class="fas fa-times-circle"></a></td>
+                  <td><a class="btn btn-outline-primary" data-toggle="modal" data-target="#modal-<?php echo $resultado->idveiculo;?>" ><i class="fas fa-edit"></i></a></td>
+                  <td><a href="excluir.php?id=<?php echo $resultado->idveiculo;?>" class="btn btn-outline-danger"><i class="fas fa-times-circle"></a></td>
                 </tr>
+                 <div class="modal fade" id="modal-<?php echo $resultado->idveiculo;?>" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLabel" style="text-align:center;">Editar Veículo</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body bg-danger">
+              <br>
+              <form action="editarVei.php?id=<?php echo $resultado->idveiculo; ?>" method="POST" id="editar<?php echo $resultado->idveiculo; ?>">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend ">
+                    <span class="input-group-text bg-muted" >Placa:</span>
+                  </div>
+                  <input type="text" value="<?php echo $resultado->placa;?>"  class="form-control" style="text-align:center;" name="placa" id="placa">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Veículo:</span>
+                  </div>
+                  <input type="text" value="<?php echo $resultado->nomeveiculo;?>"  class="form-control" style="text-align:center;" name="nome" id="nome">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Kilometragem:</span>
+                  </div>
+                  <input type="text" value="<?php echo $resultado->kmveiculo;?>"  class="form-control" style="text-align:center;" name="km" id="km">
+                </div>
+                <br>
+              </form>
+            </div>
+            <div class="modal-footer">
+      
+              <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-outline-success" form="editar<?php echo $resultado->idveiculo; ?>">Salvar</button>
+            
+            </div>
+          </div>
+        </div>
                 <?php } ?>
               </tbody>
 
             </table>
           </div>
         </div>
+          <div class="col-md-2"></div>
     </div>
   </div>
 </div>
 
-
+     
 
 
 </body>
