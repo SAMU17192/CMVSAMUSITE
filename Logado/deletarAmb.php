@@ -12,4 +12,4 @@ $sql->execute();
 <script>
 	alert("Veículo excluído com sucesso!");
 </script>
-<meta http-equiv="refresh" content="0;url=ConAmb.html">
+<meta http-equiv="refresh" content="0;url=ConAmb.php">

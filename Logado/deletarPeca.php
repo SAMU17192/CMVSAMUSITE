@@ -12,4 +12,4 @@ $sql->execute();
 <script>
 	alert("Peça excluída com sucesso!");
 </script>
-<meta http-equiv="refresh" content="0;url=ConPeca.html">
+<meta http-equiv="refresh" content="0;url=ConPeca.php">

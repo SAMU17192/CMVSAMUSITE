@@ -85,6 +85,7 @@
               </tbody>
 
             </table>
+            <a href="CadPeca.php"><button type="button" class="btn btn-outline-primary button1 btn-lg btn-block">Cadastrar</button></a>
        </div>
     </div>
   </div>
