@@ -81,8 +81,13 @@
                   <td><?php echo $resultado->placa; ?></td>
                   <td><?php echo $resultado->nomeveiculo; ?></td>
                   <td><?php echo $resultado->kmveiculo; ?></td>
+<<<<<<< HEAD
                   <td><a class="btn btn-outline-primary" data-toggle="modal" data-target="#modal-<?php echo $resultado->idveiculo;?>" ><i class="fas fa-edit"></i></a></td>
                   <td><a href="excluir.php?id=<?php echo $resultado->idveiculo;?>" class="btn btn-outline-danger"><i class="fas fa-times-circle"></a></td>
+=======
+                  <td><a href="editar.php?id=<?php echo $resultado->idveiculo;?>" class="btn btn-outline-success"><i class="fas fa-edit"></a></td>
+                  <td><a href="deletarAmb.php?id=<?php echo $resultado->idveiculo;?>" class="btn btn-outline-danger"><i class="fas fa-times-circle"></a></td>
+>>>>>>> 5e9dfb168fa52097d1a895a3e68b6eaedc2b5f39
                 </tr>
                  <div class="modal fade" id="modal-<?php echo $resultado->idveiculo;?>" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">

@@ -59,29 +59,35 @@
           <div class="col-md-8" style="margin-top: 4%; margin-bottom: 4%;">
             
             <h1 style="color:white;">Consulta de Peças</h1>
-            <br>
-            <br>
+            <div class="jumbotron">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Nome peça</th>
+                  <th scope="col">Km máximo</th>
+                  <th scope="col">Editar</th>
+                  <th scope="col">Excluir</th>
+                </tr>
+              </thead>
 
-            <p style="color:white; font-family: Arial; font-size: 20px; text-align: center;">Placa - ambulância - Km final <button class="btn btn-outline-info">Editar</button><button class="btn btn-outline-success">Excluir</button></p>
-            <p style="color:white; font-family: Arial; font-size: 20px; text-align: center;">Placa - ambulância - Km final <button class="btn btn-outline-info">Editar</button><button class="btn btn-outline-success">Excluir</button></p>
-            <p style="color:white; font-family: Arial; font-size: 20px; text-align: center;">Placa - ambulância - Km final <button class="btn btn-outline-info">Editar</button><button class="btn btn-outline-success">Excluir</button></p>
-            <p style="color:white; font-family: Arial; font-size: 20px; text-align: center;">Placa - ambulância - Km final <button class="btn btn-outline-info">Editar</button><button class="btn btn-outline-success">Excluir</button></p>
-            <p style="color:white; font-family: Arial; font-size: 20px; text-align: center;">Placa - ambulância - Km final <button class="btn btn-outline-info">Editar</button><button class="btn btn-outline-success">Excluir</button></p>
-            <br>
-            <br>
-            <button class="btn btn-outline-dark">Atualizar</button>
+              <tbody>
+                <?php 
+                  include_once 'Codigo.php';
+                  $sql = $conexao->query("SELECT * FROM pecas");
+                  while ($resultado = $sql->fetch(PDO::FETCH_OBJ)) {
+                ?>
+                <tr>
+                  <td><?php echo $resultado->nomepeca; ?></td>
+                  <td><?php echo $resultado->kmlimite; ?></td>
+                  <td><a href="editar.php?id=<?php echo $resultado->idpeca;?>" class="btn btn-outline-success"><i class="fas fa-edit"></a></td>
+                  <td><a href="deletarPeca.php?id=<?php echo $resultado->idpeca;?>" class="btn btn-outline-danger"><i class="fas fa-times-circle"></a></td>
+                </tr>
+                <?php } ?>
+              </tbody>
 
+            </table>
           </div>
-
-          <div class="col-md-2"></div>
-
-        </div>
-
-        </div>
-      </div>
-      <div class="col-md-2">
-        
-      </div>
+       </div>
     </div>
   </div>
 </div>
