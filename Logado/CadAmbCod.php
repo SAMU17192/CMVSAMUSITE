@@ -10,12 +10,22 @@ $km = $_POST["km"];
 
 
 
-$sql = $conexao->prepare("INSERT INTO veiculos VALUES (?,?,?,?)");
-$sql->bindParam(1,$id);
-$sql->bindParam(2,$placa);
-$sql->bindParam(3,$nome);
-$sql->bindParam(4,$km);
-$sql->execute();
+$sqlVeiculo = $conexao->prepare("INSERT INTO veiculos VALUES (?,?,?,?)");
+$sqlVeiculo->bindParam(1,$id);
+$sqlVeiculo->bindParam(2,$placa);
+$sqlVeiculo->bindParam(3,$nome);
+$sqlVeiculo->bindParam(4,$km);
+$sqlVeiculo->execute();
+
+
+$sqlVei = $conexao->prepare("SELECT max(idveiculo) FROM veiculos");
+foreach ($sqlVei->execute() as $row) {
+
+$sqlTroca = $conexao->prepare("INSERT INTO troca(id, idveiculo) VALUES (?,?)");
+$sqlTroca->bindParam(1,$id);
+$sqlTroca->bindParam(2,$row['max(idveiculo)']);
+$sqlTroca->execute();
+}
 
 ?>
 <script>

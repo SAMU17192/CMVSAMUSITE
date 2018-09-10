@@ -52,10 +52,7 @@
   
 </style>
 <script type="text/javascript">
-$(document).ready(function(){
-     $('#progresso').addClass('animated bounceInLeft');
 
-});
 
 </script>
 
@@ -105,19 +102,32 @@ $(document).ready(function(){
           <div class="col-md-2"></div>
 
           <div class="col-md-8" style="margin-top: 4%; margin-bottom: 4%;">
-             <div class="row">
-        <p style="color:white; font-size:20px;">Pastilha do Freio - </p> <div id="barra"> <div class="animated shake bg-success" id="progresso" style="width: 50%;">50%</div></div><br>
-        </div>
-        <div class="row">
-        <p style="color:white; font-size:20px;">Correia dentada - </p><div id="barra"><div class="bg-success" id="progresso" style="width: 35%;">35%</div></div><br>
-      </div>
-        <div class="row">
-        <p style="color:white; font-size:20px;">Pneu - </p><div id="barra"><div class="bg-success" id="progresso" style="width: 0%;">0%</div></div><img src="icones/trocar.png" height="25px"><br>
-        </div>
-        <div class="row">
-        <p style="color:white; font-size:20px;">Véla - </p><div id="barra"><div class="bg-success" id="progresso" style="width: 85%;">85%</div></div><br>
-      </div>
-      </div>
+
+            <?php 
+
+           include_once 'Codigo.php';
+           $sqlPeca = $conexao->query("SELECT * FROM pecas");
+           while ($resultadoPeca = $sqlPeca->fetch(PDO::FETCH_OBJ)) {
+           $sqlVei = $conexao->query("SELECT * FROM veiculos");
+           while ($resultadoVei = $sqlVei->fetch(PDO::FETCH_OBJ)) {
+           
+
+            echo $resultadoVei->kmveiculo."<br>";
+            echo $resultadoPeca->kmlimite."<br>";
+            ?>
+            <div class="row">
+                <p style="color:white; font-size:20px;"><?php echo $resultadoPeca->nomepeca ?> - <?php echo $resultadoVei->nomeveiculo ?></p> <div id="barra"> <div class="bg-success" id="progresso" style="width: 50%;">50%</div></div><br>
+              </div>
+              <?php
+            
+           }
+
+           }
+
+            ?>
+
+             
+              </div>
 
           </div>
 
