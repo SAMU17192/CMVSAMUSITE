@@ -50,7 +50,7 @@
         
       </div>
       <div class="col-md-8">
-        <div class="bg-danger" style="border-radius: 15px;">
+        <div class="bg-light" style="border-radius: 15px;">
               
         <div class="row">
           
@@ -58,11 +58,10 @@
 
           <div class="col-md-8" style="margin-top: 4%; margin-bottom: 4%;">
             
-            <h1 style="color:white;">Consulta de Peças</h1>
-            <div class="jumbotron">
+            <h2 class="text-danger" align="center">Consulta de Peças</h2>
             <table class="table table-striped">
               <thead>
-                <tr>
+                <tr class="bg-danger">
                   <th scope="col">Nome peça</th>
                   <th scope="col">Km máximo</th>
                   <th scope="col">Editar</th>
@@ -86,15 +85,10 @@
               </tbody>
 
             </table>
-          </div>
        </div>
     </div>
   </div>
 </div>
-
-
-
-
 </body>
 </html>
 
