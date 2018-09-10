@@ -9,7 +9,7 @@ $km = $_POST["km"];
 
 
 
-$sql = $con->prepare("INSERT INTO veiculos VALUES (?,?,?,?)");
+$sql = $conexao->prepare("INSERT INTO veiculos VALUES (?,?,?,?)");
 $sql->bindParam(1,$id);
 $sql->bindParam(2,$placa);
 $sql->bindParam(3,$nome);

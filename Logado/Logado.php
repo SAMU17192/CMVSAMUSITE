@@ -74,7 +74,7 @@ $(document).ready(function(){
         </a>
         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
           <a class="dropdown-item text-light " href="CadAmb.html">Adicionar</a>
-          <a class="dropdown-item text-light" href="#">Verificar</a>
+          <a class="dropdown-item text-light" href="ConAmb.php">Verificar</a>
         </div>
       </li>
       <li class="nav-item dropdown">

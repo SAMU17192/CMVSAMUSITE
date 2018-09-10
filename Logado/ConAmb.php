@@ -58,30 +58,39 @@
 
           <div class="col-md-8" style="margin-top: 4%; margin-bottom: 4%;">
             
-            <h1 style="color:white;">Consulta de Ambulância</h1>
-            <br>
-            <br>
+            <h1 style="color:white;" align="center"> Consulta de Ambulância </h1>
 
-            <p style="color:white; font-family: Arial; font-size: 20px; text-align: center;">Placa - ambulância - Km final <button class="btn btn-outline-info">Editar</button><button class="btn btn-outline-success">Excluir</button></p>
-            <p style="color:white; font-family: Arial; font-size: 20px; text-align: center;">Placa - ambulância - Km final <button class="btn btn-outline-info">Editar</button><button class="btn btn-outline-success">Excluir</button></p>
-            <p style="color:white; font-family: Arial; font-size: 20px; text-align: center;">Placa - ambulância - Km final <button class="btn btn-outline-info">Editar</button><button class="btn btn-outline-success">Excluir</button></p>
-            <p style="color:white; font-family: Arial; font-size: 20px; text-align: center;">Placa - ambulância - Km final <button class="btn btn-outline-info">Editar</button><button class="btn btn-outline-success">Excluir</button></p>
-            <p style="color:white; font-family: Arial; font-size: 20px; text-align: center;">Placa - ambulância - Km final <button class="btn btn-outline-info">Editar</button><button class="btn btn-outline-success">Excluir</button></p>
-            <br>
-            <br>
-            <button class="btn btn-outline-dark">Atualizar</button>
+          <div class="jumbotron">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Placa</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Km atual</th>
+                  <th scope="col">Editar</th>
+                  <th scope="col">Excluir</th>
+                </tr>
+              </thead>
 
+              <tbody>
+                <?php 
+                  include_once 'Codigo.php';
+                  $sql = $conexao->query("SELECT * FROM veiculos");
+                  while ($resultado = $sql->fetch(PDO::FETCH_OBJ)) {
+                ?>
+                <tr>
+                  <td><?php echo $resultado->placa; ?></td>
+                  <td><?php echo $resultado->nomeveiculo; ?></td>
+                  <td><?php echo $resultado->kmveiculo; ?></td>
+                  <td><a href="editar.php?id=<?php echo $resultado->idveiculo;?>" class="btn btn-outline-success"><i class="fas fa-edit"></a></td>
+                  <td><a href="editar.php?id=<?php echo $resultado->idveiculo;?>" class="btn btn-outline-danger"><i class="fas fa-times-circle"></a></td>
+                </tr>
+                <?php } ?>
+              </tbody>
+
+            </table>
           </div>
-
-          <div class="col-md-2"></div>
-
         </div>
-
-        </div>
-      </div>
-      <div class="col-md-2">
-        
-      </div>
     </div>
   </div>
 </div>
