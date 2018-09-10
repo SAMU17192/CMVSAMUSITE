@@ -80,7 +80,7 @@
                   <td><?php echo $resultado->nomepeca; ?></td>
                   <td><?php echo $resultado->kmlimite; ?></td>
                   <td><a href="editar.php?id=<?php echo $resultado->idpeca;?>" class="btn btn-outline-success"><i class="fas fa-edit"></a></td>
-                  <td><a href="editar.php?id=<?php echo $resultado->idpeca;?>" class="btn btn-outline-danger"><i class="fas fa-times-circle"></a></td>
+                  <td><a href="deletarPeca.php?id=<?php echo $resultado->idpeca;?>" class="btn btn-outline-danger"><i class="fas fa-times-circle"></a></td>
                 </tr>
                 <?php } ?>
               </tbody>

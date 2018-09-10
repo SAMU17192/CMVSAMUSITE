@@ -83,7 +83,7 @@
                   <td><?php echo $resultado->nomeveiculo; ?></td>
                   <td><?php echo $resultado->kmveiculo; ?></td>
                   <td><a href="editar.php?id=<?php echo $resultado->idveiculo;?>" class="btn btn-outline-success"><i class="fas fa-edit"></a></td>
-                  <td><a href="editar.php?id=<?php echo $resultado->idveiculo;?>" class="btn btn-outline-danger"><i class="fas fa-times-circle"></a></td>
+                  <td><a href="deletarAmb.php?id=<?php echo $resultado->idveiculo;?>" class="btn btn-outline-danger"><i class="fas fa-times-circle"></a></td>
                 </tr>
                 <?php } ?>
               </tbody>

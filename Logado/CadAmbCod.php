@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <?php
 
 include_once "Codigo.php";
@@ -18,6 +19,6 @@ $sql->execute();
 
 ?>
 <script>
-	alert("Ambulância cadastrada com sucesso!");
+	alert("Veículo cadastrada com sucesso!");
 </script>
 <meta http-equiv="refresh" content="0;url=CadAmb.html">
