@@ -78,14 +78,50 @@
                 <tr>
                   <td><?php echo $resultado->nomepeca; ?></td>
                   <td><?php echo $resultado->kmlimite; ?></td>
-                  <td><a href="editar.php?id=<?php echo $resultado->idpeca;?>" class="btn btn-outline-success"><i class="fas fa-edit"></a></td>
+                  <td><a class="btn btn-outline-success"  data-toggle="modal" data-target="#editarPeca-<?php echo $resultado->idpeca;?>" ><i class="fas fa-edit"></a></td>
                   <td><a href="deletarPeca.php?id=<?php echo $resultado->idpeca;?>" class="btn btn-outline-danger"><i class="fas fa-times-circle"></a></td>
                 </tr>
+                <div class="modal fade" id="editarPeca-<?php echo $resultado->idpeca;?>" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="ModalLabel" style="text-align:center;">Editar Peça</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body bg-danger">
+                      <br>
+                      <form action="editarPeca.php?id=<?php echo $resultado->idpeca; ?>" method="POST" id="editar<?php echo $resultado->idpeca; ?>">
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend ">
+                            <span class="input-group-text bg-muted" >Nome:</span>
+                          </div>
+                          <input type="text" value="<?php echo $resultado->nomepeca;?>"  class="form-control" style="text-align:center;" name="nome" id="nome">
+                        </div>
+                        <br>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Kilometragem:</span>
+                          </div>
+                          <input type="text" value="<?php echo $resultado->kmlimite;?>"  class="form-control" style="text-align:center;" name="km" id="km">
+                        </div>
+                        <br>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+              
+                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                      <button type="submit" class="btn btn-outline-success" form="editar<?php echo $resultado->idpeca; ?>" >Salvar</button>
+                    
+                    </div>
+                  </div>
+                </div>
                 <?php } ?>
               </tbody>
 
             </table>
-            <a href="CadPeca.php"><button type="button" class="btn btn-outline-primary button1 btn-lg btn-block">Cadastrar</button></a>
+            <a href="CadPeca.php" class="btn btn-outline-primary button1 btn-lg btn-block">Cadastrar</a>
        </div>
     </div>
   </div>
