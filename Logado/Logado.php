@@ -101,25 +101,33 @@
           
           <div class="col-md-2"></div>
 
-          <div class="col-md-8" style="margin-top: 4%; margin-bottom: 4%;">
+          <div class="col-md-8" align="center" style="margin-top: 4%; margin-bottom: 4%;">
 
             <?php 
+            
 
            include_once 'Codigo.php';
            $sqlPeca = $conexao->query("SELECT * FROM pecas");
            while ($resultadoPeca = $sqlPeca->fetch(PDO::FETCH_OBJ)) {
            $sqlVei = $conexao->query("SELECT * FROM veiculos");
            while ($resultadoVei = $sqlVei->fetch(PDO::FETCH_OBJ)) {
+           
+            $kmfinal = $resultadoVei->kmup - $resultadoVei->kmveiculo;
 
-            $kmup = 15000;
+            $conta1 =  100 - (($kmfinal / $resultadoPeca->kmlimite)*100);
+            if($conta1 <= 0 ){
 
-            $kmfinal = $kmup - $resultadoVei->kmveiculo;
+               echo '<div class="row">
+                <p style="color:white; font-size:20px;"> '.$resultadoPeca->nomepeca.' - '.$resultadoVei->nomeveiculo.' <br></p> <div id="barra"> <div class="bg-dark animated pulse slower" id="progresso" style="width: 100%; color:white;">Faça a troca</div></div>&nbsp;&nbsp;<img class=" animated pulse slower" src="icones/trocar.png" height="30px">
+              </div><br>';
 
-            $conta1 =  100 - (($kmfinal / $resultadoPeca->kmlimite)*100) ;
+            }
+            else{
             
             echo '<div class="row">
-                <p style="color:white; font-size:20px;"> '.$resultadoPeca->nomepeca.' - '.$resultadoVei->nomeveiculo.' </p> <div id="barra"> <div class="bg-success" id="progresso" style="width: '.$conta1.'%">'.$conta1.'%</div></div><br>
-              </div>';
+                <p style="color:white; font-size:20px;"> '.$resultadoPeca->nomepeca.' - '.$resultadoVei->nomeveiculo.' <br></p> <div id="barra"> <div class="bg-success" id="progresso" style="width: '.$conta1.'%">'.$conta1.'%</div></div><br>
+              </div><br>';
+            }
 
           
                   
