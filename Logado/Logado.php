@@ -110,16 +110,19 @@
            while ($resultadoPeca = $sqlPeca->fetch(PDO::FETCH_OBJ)) {
            $sqlVei = $conexao->query("SELECT * FROM veiculos");
            while ($resultadoVei = $sqlVei->fetch(PDO::FETCH_OBJ)) {
-           
 
-            echo $resultadoVei->kmveiculo."<br>";
-            echo $resultadoPeca->kmlimite."<br>";
-            ?>
-            <div class="row">
-                <p style="color:white; font-size:20px;"><?php echo $resultadoPeca->nomepeca ?> - <?php echo $resultadoVei->nomeveiculo ?></p> <div id="barra"> <div class="bg-success" id="progresso" style="width: 50%;">50%</div></div><br>
-              </div>
-              <?php
+            $kmup = 15000;
+
+            $kmfinal = $kmup - $resultadoVei->kmveiculo;
+
+            $conta1 =  100 - (($kmfinal / $resultadoPeca->kmlimite)*100) ;
             
+            echo '<div class="row">
+                <p style="color:white; font-size:20px;"> '.$resultadoPeca->nomepeca.' - '.$resultadoVei->nomeveiculo.' </p> <div id="barra"> <div class="bg-success" id="progresso" style="width: '.$conta1.'%">'.$conta1.'%</div></div><br>
+              </div>';
+
+          
+                  
            }
 
            }
