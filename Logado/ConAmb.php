@@ -59,18 +59,10 @@
           <div class="col-md-8" style="margin-top: 4%; margin-bottom: 4%;">
             
 
-            <h2 class="text-danger" align="center"> Consulta de Ambulância </h2>
-            
-            <table class="table table-striped ">
-              <thead >
-                <tr class="bg-danger">
-
-            <h1 style="color:white;" align="center"> Consulta de Ambulância </h1>
-          
-            <table class="table table-responsive ">
+           <h2 class="text-danger" align="center">Consulta de Ambulâncias</h2>
+            <table class="table table-striped">
               <thead>
-                <tr>
-
+                <tr class="bg-danger">
                   <th scope="col">Placa</th>
                   <th scope="col">Nome</th>
                   <th scope="col">Km atual</th>
@@ -146,6 +138,7 @@
               </tbody>
                </div>
             </table>
+            <a href="CadAmb.html" class="btn btn-outline-primary button1 btn-lg btn-block">Cadastrar</a>
           
        
           <div class="col-md-2"></div>

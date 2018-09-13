@@ -90,11 +90,11 @@
 <div class="py-5">
   <div class="container">
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-0">
         
       </div>
 
-      <div class="col-md-8" align="center" >
+      <div class="col-md-12" align="center" >
         <div class="bg-danger" style="border-radius: 15px;">
               
         <div class="row">
@@ -107,14 +107,23 @@
             
 
            include_once 'Codigo.php';
+           $sqlVei = $conexao->query("SELECT * FROM veiculos ORDER BY idveiculo ASC ");
+           while ($resultadoVei = $sqlVei->fetch(PDO::FETCH_OBJ)) {
            $sqlPeca = $conexao->query("SELECT * FROM pecas");
            while ($resultadoPeca = $sqlPeca->fetch(PDO::FETCH_OBJ)) {
-           $sqlVei = $conexao->query("SELECT * FROM veiculos");
-           while ($resultadoVei = $sqlVei->fetch(PDO::FETCH_OBJ)) {
+           
            
             $kmfinal = $resultadoVei->kmup - $resultadoVei->kmveiculo;
 
-            $conta1 =  100 - (($kmfinal / $resultadoPeca->kmlimite)*100);
+           
+
+            $conta =  100 - (($kmfinal / $resultadoPeca->kmlimite)*100);
+
+            $conta1 = number_format($conta, 2, '.','');
+            $conta2 = number_format($conta, 2, ',','');
+
+            //o final que esta vazio é para fazer o . do 1000 Ex: 1.000,00
+            //$conta1 = number_format($conta, 2, ',','.');
             if($conta1 <= 0 ){
 
                echo '<div class="row">
@@ -125,7 +134,7 @@
             else{
             
             echo '<div class="row">
-                <p style="color:white; font-size:20px;"> '.$resultadoPeca->nomepeca.' - '.$resultadoVei->nomeveiculo.' <br></p> <div id="barra"> <div class="bg-success" id="progresso" style="width: '.$conta1.'%">'.$conta1.'%</div></div><br>
+                <p style="color:white; font-size:20px;"> '.$resultadoPeca->nomepeca.' - '.$resultadoVei->nomeveiculo.' <br></p> <div id="barra"> <div class="bg-success" id="progresso" style="width: '.$conta1.'%">'.$conta2.'%</div></div><br>
               </div><br>';
             }
 
@@ -136,20 +145,20 @@
            }
 
             ?>
-
+              
              
               </div>
 
           </div>
 
-          <div class="col-md-2"></div>
+          <div class="col-md-0"></div>
 
         </div>
 
         </div>
       </div>
 
-      <div class="col-md-2">
+      <div class="col-md-0">
         
       </div>
     </div>

@@ -121,7 +121,7 @@
               </tbody>
 
             </table>
-            <a href="CadPeca.php" class="btn btn-outline-primary button1 btn-lg btn-block">Cadastrar</a>
+            <a href="CadPeca.html" class="btn btn-outline-primary button1 btn-lg btn-block">Cadastrar</a>
        </div>
     </div>
   </div>
