@@ -111,6 +111,7 @@
            while ($resultadoVei = $sqlVei->fetch(PDO::FETCH_OBJ)) {
            $sqlPeca = $conexao->query("SELECT * FROM pecas");
            while ($resultadoPeca = $sqlPeca->fetch(PDO::FETCH_OBJ)) {
+
            
            
             $kmfinal = $resultadoVei->kmup - $resultadoVei->kmveiculo;
@@ -124,11 +125,83 @@
 
             //o final que esta vazio é para fazer o . do 1000 Ex: 1.000,00
             //$conta1 = number_format($conta, 2, ',','.');
-            if($conta1 <= 0 ){
+            if($conta1 <= 5 ){
 
                echo '<div class="row">
-                <p style="color:white; font-size:20px;"> '.$resultadoPeca->nomepeca.' - '.$resultadoVei->nomeveiculo.' <br></p> <div id="barra"> <div class="bg-dark animated pulse slower" id="progresso" style="width: 100%; color:white;">Faça a troca</div></div>&nbsp;&nbsp;<img class=" animated pulse slower" src="icones/trocar.png" height="30px">
+                <p style="color:white; font-size:20px;"> '.$resultadoPeca->nomepeca.' - '.$resultadoVei->nomeveiculo.' <br></p> <div id="barra"> <div class="bg-dark animated pulse slower" id="progresso" style="width: 100%; color:white;">Faça a troca</div></div>&nbsp;&nbsp;<img data-toggle="modal" data-target="#troca-'.$resultadoPeca->idpeca.'"   class=" animated pulse slower" src="icones/trocar.png" height="30px">
               </div><br>';
+              ?>
+              <div class="modal fade" id="troca-<?php echo $resultadoPeca->idpeca;?>" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header bg-danger">
+                      <h5 class="modal-title" id="ModalLabel" style="text-align:center;">Trocar Peça</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body bg-light">
+
+                    <form>
+                     <div class="input-group mb-3">
+                          <div class="input-group-prepend ">
+                            <span class="input-group-text bg-muted" >Nome:</span>
+                          </div>
+                          <input type="text" value="<?php echo $resultadoPeca->nomepeca;?>"  class="form-control" style="text-align:center;" name="nome" readonly id="nome">
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">Kilometragem:</span>
+                          </div>
+                          <input type="text" value="<?php echo $resultadoPeca->kmlimite;?>"  class="form-control" style="text-align:center;" readonly name="km" id="km">
+                        </div>
+                    <?php
+                    $sqlEstoque = $conexao->query("SELECT * FROM estoque WHERE idpeca =$resultadoPeca->idpeca AND quantidade > 0");
+                    $resultadoEstoque = $sqlEstoque->fetch(PDO::FETCH_OBJ);
+                    if ($resultadoEstoque == true) {
+                      ?>
+
+
+                      <label> Deseja retirar do estoque?</label>
+                       
+                          <div class="form-check">
+
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                            <label class="form-check-label" for="exampleRadios1">Sim</label>
+
+                          </div>
+
+                          <div class="form-check">
+                          
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option2" >
+                            <label class="form-check-label" for="exampleRadios1">Não</label>
+
+                          </div>
+
+                          <?php                 
+             
+                        }else{
+                          ?>
+                          <div class="input-group mb-3">
+                          <div class="input-group-prepend ">
+                            <span class="input-group-text bg-muted" >Valor da peça:</span>
+                          </div>
+                          <input type="text" value=""  class="form-control" style="text-align:center;" name="nome" id="nome">
+                        </div>
+                          <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="modal-footer ">
+              
+                      <button type="button" class="btn btn-outline-dark " data-dismiss="modal">Cancelar</button>
+                      <button type="submit" class="btn btn-outline-success " form="editar<?php echo $resultadoPeca->idpeca; ?>" >Salvar</button>
+                    
+                    </div>
+                  </div>
+                </div>
+                </div>
+              <?php
 
             }
             else{
