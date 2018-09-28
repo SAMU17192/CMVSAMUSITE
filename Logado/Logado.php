@@ -161,22 +161,35 @@
                     if ($resultadoEstoque == true) {
                       ?>
 
+                      
+                      <div class="input-group mb-3">
 
-                      <label> Deseja retirar do estoque?</label>
+                      <span class="input-group-text bg-muted">Deseja retirar do estoque?</span>
                        
-                          <div class="form-check">
+                      </div> 
 
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                            <label class="form-check-label" for="exampleRadios1">Sim</label>
+                          <div class="d-block my-3 ">
+
+                          <div class="input-group mb-3 ">
+
+                          <div class="custom-control custom-radio ">
+
+                            <input class="form-control-input " type="radio" name="estoque" id="sim" value="1" checked >
+                            <label class="form-control-label" for="sim">Sim</label>
 
                           </div>
 
-                          <div class="form-check">
+                          <div class="custom-control custom-radio">
+
                           
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option2" >
-                            <label class="form-check-label" for="exampleRadios1">Não</label>
+                            <input class="form-control-input" type="radio" name="estoque" id="nao" value="0" >
+                            <label class="form-control-label" for="nao">Não</label>
 
                           </div>
+
+                          </div>
+                          </div>
+                         
 
                           <?php                 
              
@@ -192,9 +205,9 @@
                         }
                         ?>
                     </div>
-                    <div class="modal-footer ">
+                    <div class="modal-footer" style="background-color: #e9ecef">
               
-                      <button type="button" class="btn btn-outline-dark " data-dismiss="modal">Cancelar</button>
+                      <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
                       <button type="submit" class="btn btn-outline-success " form="editar<?php echo $resultadoPeca->idpeca; ?>" >Salvar</button>
                     
                     </div>
