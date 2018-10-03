@@ -14,13 +14,15 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-  <a class="navbar-brand" href="#"><i style="font-size: 2rem;" class="fal fa-car-mechanic"></i><b> C.M.V SAMU - 192</b></a>
+  <a class="navbar-brand" href="Logado.php"><i style="font-size: 2rem;" class="fal fa-car-mechanic"></i><b> C.M.V SAMU - 192</b></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+
+      <!-- Veiculos -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Veículos
@@ -30,6 +32,8 @@
           <a class="dropdown-item text-light" href="ConAmb.php">Verificar</a>
         </div>
       </li>
+
+       <!-- Peças -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Peças
@@ -39,6 +43,12 @@
           <a class="dropdown-item text-light" href="ConPeca.php">Verificar</a>
         </div>
       </li>
+
+      <!-- Controle de manutenção -->
+        <a class="nav-link" href="controle.php"  aria-haspopup="true" aria-expanded="false">
+          Controle de Manutenção
+        </a>
+      
     </ul>
   </div>
 </nav>
@@ -80,11 +90,11 @@
                 </div>
                    <div class="form-group row">
                   <div class="col-12">
-                    <button type="submit" class="btn btn-outline-dark button1 btn-lg btn-block">Cadastrar</button>
+                    <button type="submit" class="btn btn-outline-dark text-light button1 btn-lg btn-block">Cadastrar</button>
                  </div>
                 </div>
               </form>
-              <a href="ConAmb.php" class="btn btn-outline-primary button1 btn-lg btn-block">Consultar</a>
+              <a href="ConAmb.php" class="btn btn-outline-primary text-light button1 btn-lg btn-block">Consultar</a>
 
           </div>
 

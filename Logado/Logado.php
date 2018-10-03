@@ -69,6 +69,8 @@ $(document).ready(function(){
   
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+
+    <!-- Veiculos -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Veículos
@@ -78,6 +80,8 @@ $(document).ready(function(){
           <a class="dropdown-item text-light" href="ConAmb.php">Verificar</a>
         </div>
       </li>
+
+      <!-- Peças -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Peças
@@ -87,6 +91,12 @@ $(document).ready(function(){
           <a class="dropdown-item text-light" href="ConPeca.php">Verificar</a>
         </div>
       </li>
+
+      <!-- Controle de manutenção -->
+        <a class="nav-link" href="controle.php"  aria-haspopup="true" aria-expanded="false">
+          Controle de Manutenção
+        </a>
+   
     </ul>
   </div>
 </nav>
@@ -200,7 +210,7 @@ $(document).ready(function(){
                           <div class="input-group-prepend ">
                             <span class="input-group-text bg-muted" >Valor da peça:</span>
                           </div>
-                          <input type="text"   class="form-control" style="text-align:center;" name="valorpeca" id="nome">
+                          <input type="text" class="form-control" style="text-align:center;" name="valorpeca" id="nome">
                         </div>
                          
 
