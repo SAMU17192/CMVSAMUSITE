@@ -1,0 +1,31 @@
+   <?php 
+
+            include_once('Codigo.php');
+
+            //$sql = "SELECT p.*, V.*, t.* FROM pecas as p INNER JOIN troca as t INNER JOIN veiculos as v ON (p.idpeca = t.idpeca AND v.idveiculo = t.idveiculo)";
+            $sql = "SELECT * FROM veiculos";
+            $sqlCons = $conexao->query($sql);
+           
+            while ($resultado = $sqlCons->fetch(PDO::FETCH_OBJ)) {
+
+              $id = $resultado->idveiculo;
+
+              $sql2 = "SELECT * FROM troca WHERE idveiculo = $id";
+              $sqlCons2 = $conexao->query($sql2);
+              $resultado2 = $sqlCons2->fetchAll(PDO::FETCH_ASSOC);
+
+              if (count($resultado2) == 0) {
+                
+              }
+              else{
+                $sqlDados = "SELECT p.*, V.*, t.* FROM pecas as p INNER JOIN troca as t INNER JOIN veiculos as v ON (p.idpeca = t.idpeca AND v.idveiculo = t.idveiculo) AND v.idveiculo = $id";
+                $sqlConsDados = $conexao->query($sqlDados);
+                $resultadoDados = $sqlConsDados->fetchAll(PDO::FETCH_ASSOC);
+
+                var_dump($resultadoDados);
+
+              }
+           
+            }
+
+           ?>
