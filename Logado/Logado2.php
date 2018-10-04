@@ -147,7 +147,7 @@ $(document).ready(function(){
                 <p style="color:white; font-size:20px;"> '.$resultadoPeca->nomepeca.' - '.$resultadoVei->nomeveiculo.' <br></p> <div id="barra"> <div class="bg-dark animated pulse slower" id="progresso" style="width: 100%; color:white;">Faça a troca</div></div>&nbsp;&nbsp;<img data-toggle="modal" data-target="#troca-'.$resultadoPeca->idpeca.'" class=" animated pulse slower" src="icones/trocar.png" height="30px">
               </div><br>';
             ?>
-               <form action="Troca.php?idamb=<?php echo $resultadoVei->idveiculo;?>&&idpeca=<?php echo $resultadoPeca->idpeca;?>&&kmtroca=<?php echo $resultadoVei->kmup;?>" method="post">
+               <form action="Troca.php?idamb=<?php echo $resultadoVei->idveiculo;?>&idpeca=<?php echo $resultadoPeca->idpeca;?>&kmtroca=<?php echo $resultadoVei->kmup;?>" method="post">
 
               <div class="modal fade" id="troca-<?php echo $resultadoPeca->idpeca;?>" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-dialog-centered" role="document">

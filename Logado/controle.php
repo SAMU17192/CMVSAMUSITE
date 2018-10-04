@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="css/estilo.css">
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.js"></script>
+  <script src="js/requisicao.js"></script>
 	<link rel="stylesheet" href="https://pro-staging.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
 </head>
 <body style="background-color: #c9c9c9">
@@ -84,31 +85,16 @@
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody id="tabela" >
                 <?php 
                   include_once 'Codigo.php';
-                  $sql = $conexao->query("SELECT * FROM troca");
+                  $sql = $conexao->query("SELECT t.*, v.nomeveiculo, p.nomepeca FROM troca as t INNER JOIN veiculos as v INNER JOIN pecas as p ON t.idveiculo = v.idveiculo AND t.idpeca = p.idpeca");
                   while ($resultado = $sql->fetch(PDO::FETCH_OBJ)) {
                 ?>
                 <tr>
-                  <td><?php echo $resultado->id; ?></td>
-
-                  <?php  
-                    // consulta para pegar o nome do veiculo
-                    $veiculo = $conexao->query("SELECT * FROM veiculos WHERE idveiculo = $resultado->idveiculo");
-                    $nomeveiculo = $veiculo->fetch(PDO::FETCH_OBJ)
-                      ?>
-                  <!-- mostrando nome do veiculo -->   
-                  <td><?php echo $nomeveiculo->nomeveiculo; ?></td>
-
-                  <?php  
-                    // consulta para pegar o nome do veiculo
-                    $peca = $conexao->query("SELECT * FROM pecas WHERE idpeca = $resultado->idpeca");
-                    $nomepeca = $peca->fetch(PDO::FETCH_OBJ)
-                      ?>
-                  <!-- mostrando nome do veiculo -->   
-                  <td><?php echo $nomepeca->nomepeca; ?></td>
-
+                  <td><?php echo $resultado->id; ?></td> 
+                  <td><?php echo $resultado->nomeveiculo; ?></td> 
+                  <td><?php echo $resultado->nomepeca; ?></td>
                   <td><?php echo $resultado->kmtroca; ?></td>
                   <td><?php echo $resultado->valor; ?></td>
                   <td><?php echo $resultado->estoque; ?></td>
