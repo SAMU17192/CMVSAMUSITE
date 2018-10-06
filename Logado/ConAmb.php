@@ -9,7 +9,7 @@
 	<script src="js/bootstrap.js"></script>
 	<link rel="stylesheet" href="https://pro-staging.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
 </head>
-<body style="background-color: #c9c9c9">
+<body class="bg-light">
 
 
 
@@ -44,6 +44,17 @@
         </div>
       </li>
 
+       <!-- Estoque -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Estoque
+        </a>
+        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item text-light " href="CadEstoque.php">Adicionar</a>
+          <a class="dropdown-item text-light" href="ConEstoque.php">Verificar</a>
+        </div>
+      </li>
+
       <!-- Controle de manutenção -->
         <a class="nav-link" href="controle.php"  aria-haspopup="true" aria-expanded="false">
           Controle de Manutenção
@@ -54,25 +65,12 @@
 </nav>
 
 <div class="py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-2">
-        
-      </div>
-      <div class="col-md-8">
-        <div class="bg-light" style="border-radius: 15px;">
-              
-        <div class="row">
-          
-          <div class="col-md-2"></div>
+  <div class="container">            
 
-          <div class="col-md-8" style="margin-top: 4%; margin-bottom: 4%;">
-            
-
-           <h2 class="text-danger" align="center">Consulta de Ambulâncias</h2>
+           <h2 class="text-danger" align="center">Consulta de Ambulâncias</h2><BR>
             <table class="table table-striped">
               <thead>
-                <tr class="bg-danger">
+                <tr class="bg-danger text-light">
                   <th scope="col">Placa</th>
                   <th scope="col">Nome</th>
                   <th scope="col">Km atual</th>
@@ -88,76 +86,68 @@
                   while ($resultado = $sql->fetch(PDO::FETCH_OBJ)) {
                 ?>
                 <tr>
-                  <td><?php echo $resultado->placa; ?></td>
-                  <td><?php echo $resultado->nomeveiculo; ?></td>
-                  <td><?php echo $resultado->kmveiculo; ?></td>
+                  <td><?php echo $resultado->PlacaVeiculo; ?></td>
+                  <td><?php echo $resultado->NomeVeiculo; ?></td>
+                  <td><?php echo $resultado->KmVeiculo; ?></td>
 
-                  <td><a class="btn btn-outline-primary" data-toggle="modal" data-target="#modal-<?php echo $resultado->idveiculo;?>" ><i class="fas fa-edit"></i></a></td>
+                  <td><a class="btn btn-outline-primary" data-toggle="modal" data-target="#modal-<?php echo $resultado->IdVeiculo;?>" ><i class="fas fa-edit"></i></a></td>
                   <!--<td><a href="excluir.php?id=<?php// echo $resultado->idveiculo;?>" class="btn btn-outline-danger"><i class="fas fa-times-circle"></a></td>-->
 
                   <!--<td><a href="editar.php?id=<?php// echo $resultado->idveiculo;?>" class="btn btn-outline-success"><i class="fas fa-edit"></a></td>-->
-                  <td><a href="deletarAmb.php?id=<?php echo $resultado->idveiculo;?>" class="btn btn-outline-danger"><i class="fas fa-times-circle"></a></td>
+                  <td><a href="deletarAmb.php?id=<?php echo $resultado->IdVeiculo;?>" class="btn btn-outline-danger"><i class="fas fa-times-circle"></a></td>
 
                 </tr>
-                 <div class="modal fade" id="modal-<?php echo $resultado->idveiculo;?>" tabindex="-1" role="dialog">
+                 <div class="modal fade" id="modal-<?php echo $resultado->IdVeiculo;?>" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-danger text-light">
               <h5 class="modal-title" id="ModalLabel" style="text-align:center;">Editar Veículo</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body bg-danger">
+            <div class="modal-body" style="background-color: #fff">
               <br>
-              <form action="editarVei.php?id=<?php echo $resultado->idveiculo; ?>" method="POST" id="editar<?php echo $resultado->idveiculo; ?>">
+              <form action="editarVei.php?id=<?php echo $resultado->IdVeiculo; ?>" method="POST" id="editar<?php echo $resultado->IdVeiculo; ?>">
                 <div class="input-group mb-3">
                   <div class="input-group-prepend ">
                     <span class="input-group-text bg-muted" >Placa:</span>
                   </div>
-                  <input type="text" value="<?php echo $resultado->placa;?>"  class="form-control" style="text-align:center;" name="placa" id="placa">
+                  <input type="text" value="<?php echo $resultado->PlacaVeiculo;?>"  class="form-control" style="text-align:center;" name="placa" id="placa">
                 </div>
                 <br>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Veículo:</span>
                   </div>
-                  <input type="text" value="<?php echo $resultado->nomeveiculo;?>"  class="form-control" style="text-align:center;" name="nome" id="nome">
+                  <input type="text" value="<?php echo $resultado->NomeVeiculo;?>"  class="form-control" style="text-align:center;" name="nome" id="nome">
                 </div>
                 <br>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Kilometragem:</span>
                   </div>
-                  <input type="text" value="<?php echo $resultado->kmveiculo;?>"  class="form-control" style="text-align:center;" name="km" id="km">
+                  <input type="text" value="<?php echo $resultado->KmVeiculo;?>"  class="form-control" style="text-align:center;" name="km" id="km">
                 </div>
                 <br>
               </form>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" style="background-color: #e9ecef">
       
               <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-outline-success" form="editar<?php echo $resultado->idveiculo; ?>" >Salvar</button>
+              <button type="submit" class="btn btn-outline-success" form="editar<?php echo $resultado->IdVeiculo; ?>" >Salvar</button>
             
             </div>
           </div>
         </div>
-
-
                 <?php } ?>
-              </tbody>
-               </div>
-            </table>
-            <a href="CadAmb.html" class="btn btn-outline-primary button1 btn-lg btn-block">Cadastrar</a>
-          
-       
-          <div class="col-md-2"></div>
-    </div>
-  </div>
-</div>
 
-     
-
+        </tbody>
+           </div>
+          </table>
+          <a href="CadAmb.html" class="btn btn-outline-primary button1 btn-lg btn-block">Cadastrar</a>
+          </div>
+        </div>
 
 </body>
 </html>

@@ -2,11 +2,10 @@
 
 	header("Access-Control-Allow-Origin: *");
 	include_once("../codigo.php");
-
 	$texto = $_POST["filtro"];
 		// fazendo uma consulta de todos os clientes que o nome seja igual o texto digitado
 
-		$sql = "SELECT t.*, v.nomeveiculo, p.nomepeca FROM troca as t INNER JOIN veiculos as v INNER JOIN pecas as p ON (t.idveiculo = v.idveiculo AND t.idpeca = p.idpeca) AND v.nomeveiculo LIKE '%$texto%'";
+		$sql = "SELECT * FROM historicotroca WHERE NomeVeiculo LIKE '%$texto%'";
 
 		$consulta = $conexao->query($sql);
 

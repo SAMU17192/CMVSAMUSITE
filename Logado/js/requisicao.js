@@ -19,12 +19,15 @@ $(document).ready(function(){
 		        {
 		        	//adicionando os dados do funcionario na tabela
 		        	acumul += '<tr>';
-			        acumul += '<td>'+ data[i].id + '</td>';
-					acumul += '<td>'+ data[i].nomeveiculo + '</td>';
-					acumul += '<td>'+ data[i].nomepeca + '</td>';
-					acumul += '<td>'+ data[i].kmtroca + '</td>';
-					acumul += '<td>'+ data[i].valor + '</td>';
-					acumul += '<td>'+ data[i].estoque + '</td>';
+			        acumul += '<td>'+ data[i].IdHis + '</td>';
+					acumul += '<td>'+ data[i].NomeVeiculo + '</td>';
+					acumul += '<td>'+ data[i].NomePeca + '</td>';
+					acumul += '<td>'+ data[i].KmTroca + '</td>';
+					acumul += '<td>'+ data[i].Valor + '</td>';
+					acumul += '<td>'+ data[i].Estoque + '</td>';
+					acumul += '<td>'+ data[i].NumeroNota + '</td>';
+					acumul += '<td>'+ data[i].LocalCompra + '</td>';
+					acumul += '<td>'+ data[i].Data + '</td>';
 					acumul += '</tr>';
 
 		        }

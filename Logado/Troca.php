@@ -9,63 +9,80 @@
 
 	if (isset($_POST['estoque'])) {
 
-		$verificacao = $_POST['estoque'];
+		$estoque = $_POST['estoque'];
+		echo "entrei";
 
-		if ($estoque = 0) {
+		if ($estoque == 0) {
 
-			$valor = $_POST['valorpeca'];
+			$sqlTroca = $conexao->prepare("UPDATE trocas SET KmTroca = ? WHERE IdVeiculo = ? AND IdPeca = ?");
+			$sqlTroca->bindParam(1,$kmtroca);
+			$sqlTroca->bindParam(2,$idamb);
+			$sqlTroca->bindParam(3,$idpeca);
+			$sqlTroca->execute();
 
-			$sqlVeiculo = $conexao->prepare("INSERT INTO troca VALUES (?,?,?,?,?,?,?)");
-			$sqlVeiculo->bindParam(1,$id);
-			$sqlVeiculo->bindParam(2,$idamb);
-			$sqlVeiculo->bindParam(3,$idpeca);
-			$sqlVeiculo->bindParam(4,$kmtroca);
-			$sqlVeiculo->bindParam(5,$valor);
-			$sqlVeiculo->bindParam(6,$estoque);
-			$sqlVeiculo->bindParam(7,$kmtroca);
-			$sqlVeiculo->execute();
+			$sql = "SELECT p.*, V.* FROM pecas as p INNER JOIN veiculos as v ON (p.IdPeca = $idpeca AND v.IdVeiculo = $idamb)";
+
+            $sqlCons = $conexao->query($sql);
+           
+            while ($resultado = $sqlCons->fetch(PDO::FETCH_OBJ)) {
+
+            $valor = $_POST['valorpeca'];	
+
+            $teste = "Teste";
+            $nota = 0;
+
+			$sqlHis = $conexao->prepare("INSERT INTO historicotroca VALUES (?,?,?,?,?,?,?,?,now())");
+			$sqlHis->bindParam(1,$id);
+			$sqlHis->bindParam(2,$resultado->NomeVeiculo);
+			$sqlHis->bindParam(3,$resultado->NomePeca);
+			$sqlHis->bindParam(4,$kmtroca);
+			$sqlHis->bindParam(5,$estoque);
+			$sqlHis->bindParam(6,$valor);
+			$sqlHis->bindParam(7,$nota);
+			$sqlHis->bindParam(8,$teste);
 
 			
+			$sqlHis->execute();
 
+			}
 		}
-		if ($estoque = 1) {
+		if ($estoque == 1) {
 
-		   /*include_once 'Codigo.php';
-           $sqlEst = $conexao->query("SELECT * FROM estoque WHERE idpeca = $idpeca ");
-           while ($resultadoEst = $sqlEst->fetch(PDO::FETCH_OBJ)) {*/
-			$valor = 0;
-			$sqlVeiculo = $conexao->prepare("INSERT INTO troca VALUES (?,?,?,?,?,?,?)");
-			$sqlVeiculo->bindParam(1,$id);
-			$sqlVeiculo->bindParam(2,$idamb);
-			$sqlVeiculo->bindParam(3,$idpeca);
-			$sqlVeiculo->bindParam(4,$kmtroca);
-			$sqlVeiculo->bindParam(5,$valor);
-			$sqlVeiculo->bindParam(6,$estoque);
-			$sqlVeiculo->bindParam(7,$kmtroca);
-			$sqlVeiculo->execute();
-			#}
+			$sqlTroca = $conexao->prepare("UPDATE trocas SET KmTroca = ? WHERE IdVeiculo = ? AND IdPeca = ?");
+			$sqlTroca->bindParam(1,$kmtroca);
+			$sqlTroca->bindParam(2,$idamb);
+			$sqlTroca->bindParam(3,$idpeca);
+			$sqlTroca->execute();
+
+			$sql = "SELECT p.*, V.* FROM pecas as p INNER JOIN veiculos as v ON (p.idpeca = $idpeca AND v.idveiculo = $idamb)";
+
+            $sqlCons = $conexao->query($sql);
+           
+            while ($resultado = $sqlCons->fetch(PDO::FETCH_OBJ)) {
+
+            $valor = 0;	
+
+            $teste = "Teste";
+            $nota = 0;
+
+			$sqlHis = $conexao->prepare("INSERT INTO historicotroca VALUES (?,?,?,?,?,?,?,?,now())");
+			$sqlHis->bindParam(1,$id);
+			$sqlHis->bindParam(2,$resultado->NomeVeiculo);
+			$sqlHis->bindParam(3,$resultado->NomePeca);
+			$sqlHis->bindParam(4,$kmtroca);
+			$sqlHis->bindParam(5,$estoque);
+			$sqlHis->bindParam(6,$valor);
+			$sqlHis->bindParam(7,$nota);
+			$sqlHis->bindParam(8,$teste);
+
 			
+			$sqlHis->execute();
+
+			}
 		}
-	}else{
-
-			$valor = $_POST['valorpeca'];
-
-			$sqlVeiculo = $conexao->prepare("INSERT INTO troca VALUES (?,?,?,?,?,?,?)");
-			$sqlVeiculo->bindParam(1,$id);
-			$sqlVeiculo->bindParam(2,$idamb);
-			$sqlVeiculo->bindParam(3,$idpeca);
-			$sqlVeiculo->bindParam(4,$kmtroca);
-			$sqlVeiculo->bindParam(5,$valor);
-			$sqlVeiculo->bindParam(6,$estoque);
-			$sqlVeiculo->bindParam(7,$kmtroca);
-			$sqlVeiculo->execute();
-
-
 	}
-
-
  ?>
- <script>
+<script>
 	alert("Peça trocada com sucesso!");
 </script>
 <meta http-equiv="refresh" content="0;url=Logado.php">

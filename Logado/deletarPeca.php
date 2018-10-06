@@ -4,7 +4,7 @@
 include_once "Codigo.php";
 
 $id = $_GET["id"];
-$sql = $conexao->prepare("DELETE FROM pecas WHERE idpeca = ?");
+$sql = $conexao->prepare("DELETE FROM pecas WHERE IdPeca = ?");
 $sql->bindParam(1,$id);
 $sql->execute();
 

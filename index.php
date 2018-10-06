@@ -11,7 +11,7 @@
 	<script src="js/bootstrap.js"></script>
 	<link rel="stylesheet" href="https://pro-staging.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
 </head>
-<body style="background-color: #c9c9c9">
+<body class="bg-light">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
 <a class="navbar-brand" href="#"><i style="font-size: 2rem;" class="fal fa-car-mechanic"></i><b> C.M.V SAMU - 192</b></a>
@@ -38,7 +38,7 @@
             
             <form action="LogarCod.php" method="post">
               <div class="form-group">
-                <label for="senha" class="text-light"><b>Senha</b></label>
+                <h3 for="senha" class="text-light"><b>Senha</b></h3>
                 <input type="password" class="form-control" placeholder="Entre com a senha" name="senha" id="senha">
               </div>
 
