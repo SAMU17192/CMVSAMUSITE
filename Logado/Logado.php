@@ -222,7 +222,7 @@ function veiculos(IdVeiculo){
                           <input type="text" value="<?php echo $resultadoTroca->KmLimiite;?>"  class="form-control" style="text-align:center;" readonly name="km" id="km">
                         </div>
                     <?php
-                    $sqlEstoque = $conexao->query("SELECT * FROM estoque WHERE idpeca = $resultadoTroca->IdPeca AND quantidade > 0");
+                    $sqlEstoque = $conexao->query("SELECT * FROM estoque WHERE NomePeca = $resultadoTroca->IdPeca AND quantidade > 0");
                     $resultadoEstoque = $sqlEstoque->fetch(PDO::FETCH_OBJ);
                     if ($resultadoEstoque == true) {
                       ?>

@@ -22,4 +22,10 @@
 		else{
 			echo 1;
 		}
+		if (isset($_POST)) {
+			$tipo = $_POST["tipo"];
+			if ($tipo == "pesqueamb") {
+				
+			}
+		}
 ?>
