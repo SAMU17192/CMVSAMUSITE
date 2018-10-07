@@ -2,12 +2,14 @@
 
 	$senha = $_POST['senha'];
 
-	if ($senha == "samu2018") {
+	if ($senha == "admin") {
 
 		header("Location: Logado/Logado.php");
 
-	}else {
-
+	}elseif ($senha == "samu2018") {
+		header("Location: Usuario/Logado.php");
+	}
+	else{
 		echo '<script type="text/javascript">
 		alert("Senha incorreta");
 		location.assign("index.php");
