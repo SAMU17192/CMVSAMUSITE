@@ -52,9 +52,13 @@
   
 </style>
 <script type="text/javascript">
+  function esconder_troca(){
+   $("#trocar").slideUp('slow');
+   $("#toop").slideDown('slow');
+}
 $(document).ready(function(){
-  $("#toop").show('slow');
-  $("#trocar").hide();
+  $("#trocar").slideUp('slow');
+   $("#toop").slideDown('slow');
     $("#toop").empty();
       $("#trocar").empty();
 
@@ -95,8 +99,8 @@ $(document).ready(function(){
 
 });
 function veiculos(IdVeiculo){
-  $("#toop").show('slow');
-  $("#trocar").hide();
+  $("#trocar").slideUp('slow');
+  $("#toop").slideDown('slow');
   $("#toop").empty();
   $.ajax({
       url: 'http://localhost/CMVSAMUSITE/Usuario/ajax/webserivce.php',
@@ -133,11 +137,12 @@ function veiculos(IdVeiculo){
 }
 function trocarpeca(IdPeca, IdVeiculo, KmTroca){
 
+  
+
+  $("#toop").slideUp('slow');
+  $("#trocar").css("display", "block");
+  $("#trocar").slideDown('slow');
   $("#trocar").empty();
-
-  $("#trocar").show('slow');
-  $("#toop").hide('slow');
-
     $.ajax({
       url: 'http://localhost/CMVSAMUSITE/Usuario/ajax/webserivce.php',
       method: "post",
@@ -177,7 +182,7 @@ function trocarpeca(IdPeca, IdVeiculo, KmTroca){
 
                                     acumul2 += '<div class="input-group mb-3" id="local"><div class="input-group-prepend "><span class="input-group-text bg-muted" >Local da Compra:</span></div><input type="text" class="form-control" style="text-align:center;" name="local" id="local"></div>';
 
-                                    acumul2 += '<button type="button" class="btn btn-outline-dark">Cancelar</button>&nbsp&nbsp';
+                                    acumul2 += '<button type="button" onclick="esconder_troca()" class="btn btn-outline-dark">Cancelar</button>&nbsp&nbsp';
 
                                     acumul2 += '<button type="submit" class="btn btn-outline-success">Trocar</button>';
 
@@ -190,7 +195,7 @@ function trocarpeca(IdPeca, IdVeiculo, KmTroca){
 
                                     acumul2 += '<div class="input-group mb-3" id="local"><div class="input-group-prepend "><span class="input-group-text bg-muted" >Local da Compra:</span></div><input type="text" class="form-control" style="text-align:center;" name="local" id="local"></div>';
 
-                                    acumul2 += '<button type="button" class="btn btn-outline-dark" id="cancelar">Cancelar</button>&nbsp&nbsp';
+                                    acumul2 += '<button type="button" onclick="esconder_troca()" class="btn btn-outline-dark" id="cancelar">Cancelar</button>&nbsp&nbsp';
 
                                     acumul2 += '<button type="submit" class="btn btn-outline-success">Trocar</button>';
                                                                         $("#trocar").append(acumul2);
