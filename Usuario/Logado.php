@@ -190,7 +190,7 @@ function trocarpeca(IdPeca, IdVeiculo, KmTroca){
 
                                     acumul2 += '<div class="input-group mb-3" id="local"><div class="input-group-prepend "><span class="input-group-text bg-muted" >Local da Compra:</span></div><input type="text" class="form-control" style="text-align:center;" name="local" id="local"></div>';
 
-                                    acumul2 += '<button type="button" class="btn btn-outline-dark">Cancelar</button>&nbsp&nbsp';
+                                    acumul2 += '<button type="button" class="btn btn-outline-dark" id="cancelar">Cancelar</button>&nbsp&nbsp';
 
                                     acumul2 += '<button type="submit" class="btn btn-outline-success">Trocar</button>';
                                                                         $("#trocar").append(acumul2);
@@ -210,7 +210,16 @@ function trocarpeca(IdPeca, IdVeiculo, KmTroca){
           }
 
     });
+      /*
+        --------- CANCELAR --------
+          $("#cancelar").click(function(){
 
+          $("#toop").show('slow');
+          $("#trocar").hide();
+
+        });
+
+      */
 }
 
 
@@ -255,6 +264,11 @@ function trocarpeca(IdPeca, IdVeiculo, KmTroca){
       <!-- Controle de manutenção -->
         <a class="nav-link" href="controle.php"  aria-haspopup="true" aria-expanded="false">
           Controle de Manutenção
+        </a>
+
+        <!-- Sair -->
+        <a href="sair.php" class="nav-link" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sign-out-alt"></i>
+         Sair &nbsp;
         </a>
    
     </ul>

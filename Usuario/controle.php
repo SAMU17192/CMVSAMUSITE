@@ -52,6 +52,11 @@
           Controle de Manutenção
         </a>
 
+       <!-- Sair -->
+        <a href="sair.php" class="nav-link" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sign-out-alt"></i>
+         Sair &nbsp;
+        </a>
+
     </ul>
   </div>
 </nav>
@@ -93,7 +98,7 @@
                   <td><?php echo $resultado->Estoque; ?></td>
                   <td><?php echo $resultado->NumeroNota; ?></td>
                   <td><?php echo $resultado->LocalCompra; ?></td>
-                  <td><?php echo $resultado->Data; ?></td>
+                  <td><?php echo date('d/m/Y',strtotime($resultado->Data)); ?></td>
                   
                 </tr>
 

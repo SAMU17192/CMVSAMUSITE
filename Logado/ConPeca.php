@@ -59,6 +59,11 @@
         <a class="nav-link" href="controle.php"  aria-haspopup="true" aria-expanded="false">
           Controle de Manutenção
         </a>
+
+       <!-- Sair -->
+        <a href="sair.php" class="nav-link" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sign-out-alt"></i>
+         Sair &nbsp;
+        </a>
       
     </ul>
   </div>
