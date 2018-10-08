@@ -78,7 +78,7 @@ $(document).ready(function(){
            
               if (conta <= 5) {
 
-                acumul2 = '<div class="row"><p style="color:white; font-size:20px;"> '+data[i].NomePeca+' - '+data[i].NomeVeiculo+' <br></p> <div id="barra"> <div class="bg-dark animated pulse slower" id="progresso" style="width: 100%; color:white;">Faça a troca</div></div>&nbsp;&nbsp;<img onclick="trocarpeca('+data[i].IdPeca+','+data[i].IdVeiculo+');"  class=" animated pulse slower" src="icones/trocar.png" height="30px"></div><br>';
+                acumul2 = '<div class="row"><p style="color:white; font-size:20px;"> '+data[i].NomePeca+' - '+data[i].NomeVeiculo+' <br></p> <div id="barra"> <div class="bg-dark animated pulse slower" id="progresso" style="width: 100%; color:white;">Faça a troca</div></div>&nbsp;&nbsp;<img onclick="trocarpeca('+data[i].IdPeca+','+data[i].IdVeiculo+','+data[i].KmAtual+');"  class=" animated pulse slower" src="icones/trocar.png" height="30px"></div><br>';
               }else{
               
               acumul2 = '<div class="row"><p style="color:white; font-size:20px;"> '+ data[i].NomePeca + ' - '+ data[i].NomeVeiculo + ' <br></p> <div id="barra"> <div class="bg-success" id="progresso" style="width: '+conta+'%">'+conta+'%</div></div><br></div><br>';
@@ -114,7 +114,7 @@ function veiculos(IdVeiculo){
 
                   if (conta <= 5) {
                     
-                    acumul2 = '<div class="row"><p style="color:white; font-size:20px;">'+data[i].NomePeca+' - '+data[i].NomeVeiculo+'<br> </p> <div id="barra"> <div class="bg-dark animated pulse slower" id="progresso" style="width: 100%; color:white;">Faça a troca</div></div>&nbsp;&nbsp;<img onclick="trocarpeca('+data[i].IdPeca+','+data[i].IdVeiculo+')" class=" animated pulse slower" src="icones/trocar.png" height="30px"></div><br>';
+                    acumul2 = '<div class="row"><p style="color:white; font-size:20px;">'+data[i].NomePeca+' - '+data[i].NomeVeiculo+'<br> </p> <div id="barra"> <div class="bg-dark animated pulse slower" id="progresso" style="width: 100%; color:white;">Faça a troca</div></div>&nbsp;&nbsp;<img onclick="trocarpeca('+data[i].IdPeca+','+data[i].IdVeiculo+','+data[i].KmAtual+')" class=" animated pulse slower" src="icones/trocar.png" height="30px"></div><br>';
 
                   }else{
                   
@@ -131,7 +131,7 @@ function veiculos(IdVeiculo){
 
     });
 }
-function trocarpeca(IdPeca, IdVeiculo){
+function trocarpeca(IdPeca, IdVeiculo, KmTroca){
 
   $("#trocar").empty();
 
@@ -152,23 +152,56 @@ function trocarpeca(IdPeca, IdVeiculo){
                 
 
                     acumul2 += '<h1 style="color:white;">Trocar</h1><br>';
+
+                    acumul2 += '<form action="Troca.php?idvei='+IdVeiculo+'&idpeca='+IdPeca+'&kmtroca='+KmTroca+'" method="post">';
                     
                     acumul2 += '<div class="input-group mb-3"><div class="input-group-prepend "><span class="input-group-text bg-muted" >Nome:</span></div><input type="text" value="'+data[i].NomePeca+'"  class="form-control" style="text-align:center;" name="nome" readonly id="nome"></div>';
 
                     acumul2 += '<div class="input-group mb-3"><div class="input-group-prepend"><span class="input-group-text">Kilometragem:</span></div><input type="text" value="'+data[i].KmLimiite+'"  class="form-control" style="text-align:center;" readonly name="km" id="km"></div>';
 
-                    acumul2 += '<div class="input-group mb-3" id="valorpeca"><div class="input-group-prepend "><span class="input-group-text bg-muted" >Valor da Peça:</span></div><input type="text" class="form-control" style="text-align:center;" placeholder="R$ - " name="valorpeca" id="valorpeca"></div>';
+                     $.ajax({
+                        url: 'http://localhost/CMVSAMUSITE/Usuario/ajax/webserivce.php',
+                        method: "post",
+                        dataType: "json",
+                        data: {IdPeca: IdPeca, tipo: "pesqtrocaes"},
+                        success: function(dados) { 
+                                if(dados == 1){
 
-                    acumul2 += ' <div class="input-group mb-3" id="notaF"><div class="input-group-prepend "><span class="input-group-text bg-muted" >Nota Fiscal:</span></div><input type="text" class="form-control" style="text-align:center;" placeholder="N° da nota" name="notaF" id="notaF"></div>';
+                                    acumul2 += '<div class="input-group mb-3"><span class="input-group-text bg-muted">Deseja retirar do estoque?</span></div>'; 
 
-                    acumul2 += '<div class="input-group mb-3" id="local"><div class="input-group-prepend "><span class="input-group-text bg-muted" >Local da Compra:</span></div><input type="text" class="form-control" style="text-align:center;" name="local" id="local"></div>';
+                                    acumul2 +='<div class="d-block my-3 "><div class="input-group mb-3 "><div class="custom-control custom-radio "><input class="form-control-input " type="radio" name="estoque"  onclick="" id="sim" value="1" checked ><label class="form-control-label" for="sim">Sim</label></div><div class="custom-control custom-radio"><input class="form-control-input" type="radio" onclick="" name="estoque" id="nao" value="0" ><label class="form-control-label" for="nao">Não</label></div></div></div>';
 
-                    acumul2 += '<button class="btn btn-outline-dark">Cancelar</button>&nbsp&nbsp';
+                                    acumul2 += '<div class="input-group mb-3" id="valorpeca"><div class="input-group-prepend "><span class="input-group-text bg-muted" >Valor da Peça:</span></div><input type="text" class="form-control" style="text-align:center;" placeholder="R$ - " name="valorpeca" id="valorpeca"></div>';
 
-                    acumul2 += '<button class="btn btn-outline-success">Trocar</button>';
+                                    acumul2 += ' <div class="input-group mb-3" id="notaF"><div class="input-group-prepend "><span class="input-group-text bg-muted" >Nota Fiscal:</span></div><input type="text" class="form-control" style="text-align:center;" placeholder="N° da nota" name="notaF" id="notaF"></div>';
+
+                                    acumul2 += '<div class="input-group mb-3" id="local"><div class="input-group-prepend "><span class="input-group-text bg-muted" >Local da Compra:</span></div><input type="text" class="form-control" style="text-align:center;" name="local" id="local"></div>';
+
+                                    acumul2 += '<button type="button" class="btn btn-outline-dark">Cancelar</button>&nbsp&nbsp';
+
+                                    acumul2 += '<button type="submit" class="btn btn-outline-success">Trocar</button>';
+
+                                    $("#trocar").append(acumul2);
+                                    }if(dados == 0){
+
+                                      acumul2 += '<div class="input-group mb-3" id="valorpeca"><div class="input-group-prepend "><span class="input-group-text bg-muted" >Valor da Peça:</span></div><input type="text" class="form-control" style="text-align:center;" placeholder="R$ - " name="valorpeca" id="valorpeca"></div>';
+
+                                    acumul2 += ' <div class="input-group mb-3" id="notaF"><div class="input-group-prepend "><span class="input-group-text bg-muted" >Nota Fiscal:</span></div><input type="text" class="form-control" style="text-align:center;" placeholder="N° da nota" name="notaF" id="notaF"></div>';
+
+                                    acumul2 += '<div class="input-group mb-3" id="local"><div class="input-group-prepend "><span class="input-group-text bg-muted" >Local da Compra:</span></div><input type="text" class="form-control" style="text-align:center;" name="local" id="local"></div>';
+
+                                    acumul2 += '<button type="button" class="btn btn-outline-dark">Cancelar</button>&nbsp&nbsp';
+
+                                    acumul2 += '<button type="submit" class="btn btn-outline-success">Trocar</button>';
+                                                                        $("#trocar").append(acumul2);
 
 
-                   $("#trocar").append(acumul2);
+                                    }
+
+                                }
+                            });
+
+
 
                 }
 

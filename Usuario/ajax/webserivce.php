@@ -73,6 +73,21 @@
 					echo 1;
 				}
 		}
+		if ($tipo == "pesqtrocaes") {
+			$idpeca = $_POST['IdPeca'];
+			$sqlEstoque = $conexao->query("SELECT * FROM estoque WHERE NomePeca = $idpeca AND quantidade > 0");
+            $resultadoEstoque = $sqlEstoque->fetch(PDO::FETCH_OBJ);
+            
+            if ($resultadoEstoque == true) {
+
+            	echo 1;
+
+            }else{
+
+            	echo 0;
+
+            }
+		}
 
 	}
 ?>

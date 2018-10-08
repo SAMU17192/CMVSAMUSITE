@@ -2,7 +2,7 @@
 		
 	include_once "Codigo.php";
 
-	$idamb = $_GET['idamb'];
+	$idvei = $_GET['idvei'];
 	$idpeca = $_GET['idpeca'];
 	$kmtroca = $_GET['kmtroca'];
 	$id = 0;
@@ -16,11 +16,11 @@
 
 			$sqlTroca = $conexao->prepare("UPDATE trocas SET KmTroca = ? WHERE IdVeiculo = ? AND IdPeca = ?");
 			$sqlTroca->bindParam(1,$kmtroca);
-			$sqlTroca->bindParam(2,$idamb);
+			$sqlTroca->bindParam(2,$idvei);
 			$sqlTroca->bindParam(3,$idpeca);
 			$sqlTroca->execute();
 
-			$sql = "SELECT p.*, V.* FROM pecas as p INNER JOIN veiculos as v ON (p.IdPeca = $idpeca AND v.IdVeiculo = $idamb)";
+			$sql = "SELECT p.*, V.* FROM pecas as p INNER JOIN veiculos as v ON (p.IdPeca = $idpeca AND v.IdVeiculo = $idvei)";
 
             $sqlCons = $conexao->query($sql);
            
@@ -50,11 +50,11 @@
 
 			$sqlTroca = $conexao->prepare("UPDATE trocas SET KmTroca = ? WHERE IdVeiculo = ? AND IdPeca = ?");
 			$sqlTroca->bindParam(1,$kmtroca);
-			$sqlTroca->bindParam(2,$idamb);
+			$sqlTroca->bindParam(2,$idvei);
 			$sqlTroca->bindParam(3,$idpeca);
 			$sqlTroca->execute();
 
-			$sql = "SELECT p.*, V.* FROM pecas as p INNER JOIN veiculos as v ON (p.idpeca = $idpeca AND v.idveiculo = $idamb)";
+			$sql = "SELECT p.*, V.* FROM pecas as p INNER JOIN veiculos as v ON (p.idpeca = $idpeca AND v.idveiculo = $idvei)";
 
             $sqlCons = $conexao->query($sql);
            
