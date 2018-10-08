@@ -52,13 +52,16 @@
   
 </style>
 <script type="text/javascript">
+   $("#mouse").mouseover(function(){
+   
+  });
   function esconder_troca(){
    $("#trocar").slideUp('slow');
-   $("#toop").slideDown('slow');
+   $("#tabelae").slideDown('slow');
 }
 $(document).ready(function(){
    $("#trocar").slideUp('slow');
-   $("#toop").slideDown('slow');
+   $("#tabelae").slideDown('slow');
 
     $("#toop").empty();
       $("#trocar").empty();
@@ -83,10 +86,10 @@ $(document).ready(function(){
            
               if (conta <= 5) {
 
-                acumul2 = '<div class="row"><p style="color:white; font-size:20px;"> '+data[i].NomePeca+' - '+data[i].NomeVeiculo+' <br></p> <div id="barra"> <div class="bg-dark animated pulse slower" id="progresso" style="width: 100%; color:white;">Faça a troca</div></div>&nbsp;&nbsp;<img onclick="trocarpeca('+data[i].IdPeca+','+data[i].IdVeiculo+','+data[i].KmAtual+');"  class=" animated pulse slower" src="icones/trocar.png" height="30px"></div><br>';
+                 acumul2 = '<tr><td style="font-size:20px;">'+data[i].NomePeca+'</td><td align = "center" style="font-size:20px;">'+data[i].NomeVeiculo+'</td> <td align = "center" style="font-size:20px;">Faça a troca&nbsp&nbsp&nbsp<img onclick="trocarpeca('+data[i].IdPeca+','+data[i].IdVeiculo+','+data[i].KmAtual+')" id="mouse" class=" animated pulse slower" src="icones/trocar.png" height="30px"></td></tr>';
               }else{
               
-              acumul2 = '<div class="row"><p style="color:white; font-size:20px;"> '+ data[i].NomePeca + ' - '+ data[i].NomeVeiculo + ' <br></p> <div id="barra"> <div class="bg-success" id="progresso" style="width: '+conta+'%">'+conta+'%</div></div><br></div><br>';
+               acumul2 = '<tr><td style="font-size:20px;"> '+ data[i].NomePeca + '</td><td align="center" style="font-size:20px;">'+ data[i].NomeVeiculo + '</td><td align="center"><div id="barra"> <div class="bg-success" id="progresso" style="width: '+conta+'%">'+conta+'%</div></div></td></tr>';
             }
 
                $("#toop").append(acumul2);
@@ -102,7 +105,7 @@ $(document).ready(function(){
 function veiculos(IdVeiculo){
 
   $("#trocar").slideUp('slow');
-  $("#toop").slideDown('slow');
+  $("#tabelae").slideDown('slow');
   $("#toop").empty();
   $.ajax({
       url: 'http://localhost/CMVSAMUSITE/Usuario/ajax/webserivce.php',
@@ -120,11 +123,11 @@ function veiculos(IdVeiculo){
 
                   if (conta <= 5) {
                     
-                    acumul2 = '<div class="row"><p style="color:white; font-size:20px;">'+data[i].NomePeca+' - '+data[i].NomeVeiculo+'<br> </p> <div id="barra"> <div class="bg-dark animated pulse slower" id="progresso" style="width: 100%; color:white;">Faça a troca</div></div>&nbsp;&nbsp;<img onclick="trocarpeca('+data[i].IdPeca+','+data[i].IdVeiculo+','+data[i].KmAtual+')" class=" animated pulse slower" src="icones/trocar.png" height="30px"></div><br>';
+                     acumul2 = '<tr><td style="font-size:20px;">'+data[i].NomePeca+'</td><td align = "center" style="font-size:20px;">'+data[i].NomeVeiculo+'</td> <td align = "center" style="font-size:20px;">Faça a troca&nbsp&nbsp&nbsp<img onclick="trocarpeca('+data[i].IdPeca+','+data[i].IdVeiculo+','+data[i].KmAtual+')" class=" animated pulse slower" src="icones/trocar.png" height="30px"></td></tr>';
 
                   }else{
                   
-                  acumul2 = '<div class="row"><p style="color:white; font-size:20px;"> '+ data[i].NomePeca + ' - '+ data[i].NomeVeiculo + ' <br></p> <div id="barra"> <div class="bg-success" id="progresso" style="width: '+conta+'%">'+conta+'%</div></div><br></div><br>';
+                  acumul2 = '<tr ><td style="font-size:20px;"> '+ data[i].NomePeca + '</td><td align="center" style="font-size:20px;">'+ data[i].NomeVeiculo + '</td><td align="center"><div id="barra"> <div class="bg-success" id="progresso" style="width: '+conta+'%">'+conta+'%</div></div></td></tr>';
                   }
 
                    $("#toop").append(acumul2);
@@ -142,7 +145,7 @@ function trocarpeca(IdPeca, IdVeiculo, KmTroca){
 
    
 
-   $("#toop").slideUp('slow');
+   $("#tabelae").slideUp('slow');
    $("#trocar").css("display", "block");
    $("#trocar").slideDown('slow');
      $("#trocar").empty();
@@ -160,7 +163,7 @@ function trocarpeca(IdPeca, IdVeiculo, KmTroca){
                 {
                 
 
-                    acumul2 += '<h1 style="color:white;">Trocar</h1><br>';
+                    acumul2 += '<h1 class="text-danger">Trocar</h1><br>';
 
                     acumul2 += '<form action="Troca.php?idvei='+IdVeiculo+'&idpeca='+IdPeca+'&kmtroca='+KmTroca+'" method="post">';
                     
@@ -186,6 +189,8 @@ function trocarpeca(IdPeca, IdVeiculo, KmTroca){
 
                                     acumul2 += '<div class="input-group mb-3" id="local"><div class="input-group-prepend "><span class="input-group-text bg-muted" >Local da Compra:</span></div><input type="text" class="form-control" style="text-align:center;" name="local" id="local"></div>';
 
+                                    acumul2 += '<input type="text" name="ver" value="1" style="display:none">';
+
                                     acumul2 += '<button type="button" onclick="esconder_troca()" class="btn btn-outline-dark">Cancelar</button>&nbsp&nbsp';
 
                                     acumul2 += '<button type="submit" class="btn btn-outline-success">Trocar</button>';
@@ -199,11 +204,14 @@ function trocarpeca(IdPeca, IdVeiculo, KmTroca){
 
                                     acumul2 += '<div class="input-group mb-3" id="local"><div class="input-group-prepend "><span class="input-group-text bg-muted" >Local da Compra:</span></div><input type="text" class="form-control" style="text-align:center;" name="local" id="local"></div>';
 
+                                    acumul2 += '<input type="text" name="ver" value="0" style="display:none">';
+
+
                                     acumul2 += '<button type="button" onclick="esconder_troca()" class="btn btn-outline-dark">Cancelar</button>&nbsp&nbsp';
 
                                     acumul2 += '<button type="submit" class="btn btn-outline-success">Trocar</button>';
 
-                                                                        $("#trocar").append(acumul2);
+                                    $("#trocar").append(acumul2);
 
 
                                     }
@@ -285,38 +293,54 @@ function trocarpeca(IdPeca, IdVeiculo, KmTroca){
 
 
 <div class="py-5">
-  <div class="container">
-    <div class="row">
+  <div class="container" align="center">
+   <!--  <div class="row">
       <div class="col-md-0">
         
       </div>
 
       <div class="col-md-12" align="center" >
-        <div class="bg-danger" style="border-radius: 15px;">
+        <div class="bg-light" style="border-radius: 15px;">
               
         <div class="row">
           
           <div class="col-md-2"></div>
 
-            <div class="col-md-8" align="center" style="margin-top: 4%; margin-bottom: 4%;">
+            <div class="col-md-8" align="center" style="margin-top: 4%; margin-bottom: 4%;"> -->
+              <!--  -->
+            
              <?php
               include_once 'Codigo.php';
-              $sqlTroca = $conexao->query("SELECT t.*, v.NomeVeiculo FROM trocas as t INNER JOIN veiculos as v on (t.IdVeiculo = v.IdVeiculo) ORDER BY t.IdVeiculo ASC ");
+              $sqlTroca = $conexao->query("SELECT * FROM veiculos");
                   while ($resultadoTroca = $sqlTroca->fetch(PDO::FETCH_OBJ)) {
                     ?>
-              <button class="btn btn-outline-primary text-light" onclick="veiculos(<?php echo $resultadoTroca->IdVeiculo;?>);"><?php echo $resultadoTroca->NomeVeiculo; ?></button>
-              <?php
-            }
-            ?>
+                       <button class="btn btn-outline-primary " onclick="veiculos(<?php echo $resultadoTroca->IdVeiculo;?>);"><?php echo $resultadoTroca->NomeVeiculo; ?></button>
+                     
+                <?php
+                 }
+                ?>
+               
               <br>
               <br>
-              <br>
-              <div id="toop"></div>
+              <div id="tabelae">
+              <table class="table table-striped" >
+                <thead class="bg-danger text-light">
+                  <tr align="center">
+                    <th>Nome peça</th>
+                    <th>Nome ambulância</th>
+                    <th>%</th>
+                  </tr>
+                </thead>
+                <tbody id="toop" class="text-dark">
+                  <div ></div>
+                </tbody>
+              </table>
+              </div>
               <div id="trocar" style="display: none;"></div>
               
             </div>
 
-          </div>
+        <!--   </div>
 
 
           <div class="col-md-0"></div>
@@ -329,7 +353,7 @@ function trocarpeca(IdPeca, IdVeiculo, KmTroca){
       <div class="col-md-0">
         
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 
