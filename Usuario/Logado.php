@@ -302,7 +302,9 @@ function trocarpeca(IdPeca, IdVeiculo, KmTroca){
               $sqlTroca = $conexao->query("SELECT t.*, v.NomeVeiculo FROM trocas as t INNER JOIN veiculos as v on (t.IdVeiculo = v.IdVeiculo) ORDER BY t.IdVeiculo ASC ");
                   while ($resultadoTroca = $sqlTroca->fetch(PDO::FETCH_OBJ)) {
                     ?>
-              <button class="btn btn-outline-info" onclick="veiculos(<?php echo $resultadoTroca->IdVeiculo;?>);"><?php echo $resultadoTroca->NomeVeiculo; ?></button>
+            
+                <button class="btn btn-outline-primary text-light" onclick="veiculos(<?php echo $resultadoTroca->IdVeiculo;?>);"><?php echo $resultadoTroca->NomeVeiculo; ?></button>
+              
               <?php
             }
             ?>

@@ -15,6 +15,31 @@ $sql->bindParam(3,$descricao);
 $sql->bindParam(4,$kmlimite);
 $sql->execute();
 
+$consulta = $conexao->query("SELECT * FROM  veiculos");
+
+while($resultado = $consulta->fetch(PDO::FETCH_OBJ)){
+
+$consulta2 = $conexao->query("SELECT max(IdPeca) FROM  pecas");
+
+while($resultado2 = $consulta2->fetch(PDO::FETCH_OBJ)){
+
+	$idTroca = 0;
+	$troca = 1;
+
+	$sqlTroca = $conexao->prepare("INSERT INTO trocas VALUES (?,?,?,?,?,?,?)");
+	$sqlTroca->bindParam(1,$idTroca);
+	$sqlTroca->bindParam(2,$resultado->IdVeiculo);
+	$sqlTroca->bindParam(3,$resultado2->IdPeca);
+	$sqlTroca->bindParam(4,$resultado->KmVeiculo);
+	$sqlTroca->bindParam(5,$resultado->KmVeiculo);
+	$sqlTroca->bindParam(6,$kmlimite);
+	$sqlTroca->bindParam(7,$troca);
+
+	$sqlTroca->execute();
+
+}
+}
+
 ?>
 <script>
 	alert("Peça cadastrada com sucesso!");
