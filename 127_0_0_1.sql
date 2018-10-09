@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 27-Set-2018 às 18:05
+-- Generation Time: 09-Out-2018 às 03:08
 -- Versão do servidor: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -84,7 +84,19 @@ CREATE TABLE IF NOT EXISTS `troca` (
   `estoque` varchar(5) COLLATE utf8_swedish_ci NOT NULL,
   `kmatual` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
+
+--
+-- Extraindo dados da tabela `troca`
+--
+
+INSERT INTO `troca` (`id`, `idveiculo`, `idpeca`, `kmtroca`, `valor`, `estoque`, `kmatual`) VALUES
+(1, 1, 1, 25000, 0, 'sim', 25000),
+(2, 1, 1, 25000, 0, '1', 25000),
+(3, 1, 1, 25000, 0, '1', 25000),
+(4, 1, 1, 25000, 0, '1', 25000),
+(5, 1, 1, 25000, 0, '1', 25000),
+(6, 1, 1, 25000, 0, '1', 25000);
 
 -- --------------------------------------------------------
 
