@@ -10,7 +10,7 @@ $(document).ready(function(){
           url: 'http://localhost/CMVSAMUSITE/Logado/ajax/webserivce.php',
 		  method: "post",
 		  dataType: "json",
-		  data: {filtro: texto},
+		  data: {filtro: texto, tipo: "pesqhis"},
           success: function(data) {                               		
           	 if (data != 1){
 

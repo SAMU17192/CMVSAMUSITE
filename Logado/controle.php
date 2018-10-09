@@ -3,6 +3,7 @@
 <head>
 	<title>C.M.V SAMU - 192</title>
 	<meta charset="utf-8">
+  <link rel="icon" href="icones/samu.ico" type="image/x-icon" />
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="css/estilo.css">
 	<script src="js/jquery.js"></script>
@@ -15,7 +16,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-  <a class="navbar-brand" href="Logado.php"><i style="font-size: 2rem;" class="fal fa-car-mechanic"></i><b> C.M.V SAMU - 192</b></a>
+  <a class="navbar-brand" href="Logado.php"><!-- <i style="font-size: 2rem;" class="fal fa-car-mechanic"></i> --><img src="icones/samu.png" height="50px"><b> C.M.V SAMU - 192</b></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

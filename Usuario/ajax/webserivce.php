@@ -1,7 +1,7 @@
 <?php
 
 	header("Access-Control-Allow-Origin: *");
-	include_once("../codigo.php");
+	include_once("../Codigo.php");
 	if (isset($_POST)) {
 		$tipo = $_POST['tipo'];
 		if ($tipo == "pesqhis") {
