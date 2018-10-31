@@ -108,7 +108,7 @@
                   <td><?php echo $resultado->Estoque; ?></td>
                   <td><?php echo $resultado->NumeroNota; ?></td>
                   <td><?php echo $resultado->LocalCompra; ?></td>
-                  <td><?php echo $resultado->Data; ?></td>
+                  <td><?php echo date('d/m/Y',strtotime($resultado->Data));?></td>
                   
                 </tr>
 

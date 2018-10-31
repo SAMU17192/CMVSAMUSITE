@@ -110,28 +110,28 @@
             </table>
             
             <!-- encaminha a opção selecionada para relatoriovendas.php-->
-    <form action="RelManutencao.php"  method="POST">
+    <form action="RelManutencao.php" target="_blank" method="POST">
       <legend class="text-danger"><b>Relatório</b></legend>
       <select class="input-group-text" name="filtro" id="filtro">
         <option value="">Selecione uma opção</option>
         <!-- opções de relatorios-->
-        <option value="ORDER BY Data ASC">Data - Crescente </option><!--mostra a data das vendas em ordem crescente-->
-        <option value="ORDER BY Data DESC">Data - Decrescente </option><!--mostra a data das vendas em ordem decrescente-->
+        <option value="cres">Data - Crescente </option><!--mostra a data das vendas em ordem crescente-->
+        <option value="desc">Data - Decrescente </option><!--mostra a data das vendas em ordem decrescente-->
         <!-- mostra as vendas de cada mes -->
-        <option value="WHERE MONTH(Data) = 01 ORDER BY Data ASC">Janeiro </option>
-        <option value="WHERE MONTH(Data) = 02 ORDER BY Data ASC">Fevereiro </option>
-        <option value="WHERE MONTH(Data) = 03 ORDER BY Data ASC">Março </option>
-        <option value="WHERE MONTH(Data) = 04 ORDER BY Data ASC">Abril </option>
-        <option value="WHERE MONTH(Data) = 05 ORDER BY Data ASC">Maio </option>
-        <option value="WHERE MONTH(Data) = 06 ORDER BY Data ASC">Junho </option>
-        <option value="WHERE MONTH(Data) = 07 ORDER BY Data ASC">Julho </option>
-        <option value="WHERE MONTH(Data) = 08 ORDER BY Data ASC">Agosto </option>
-        <option value="WHERE MONTH(Data) = 09 ORDER BY Data ASC">Setembro </option>
-        <option value="WHERE MONTH(Data) = 10 ORDER BY Data ASC">Outubro </option>
-        <option value="WHERE MONTH(Data) = 11 ORDER BY Data ASC">Novembro </option>
-        <option value="WHERE MONTH(Data) = 12 ORDER BY Data ASC">Dezembro </option>
+        <option value="WHERE MONTH(Data) = 01 ">Janeiro </option>
+        <option value="WHERE MONTH(Data) = 02 ">Fevereiro </option>
+        <option value="WHERE MONTH(Data) = 03 ">Março </option>
+        <option value="WHERE MONTH(Data) = 04 ">Abril </option>
+        <option value="WHERE MONTH(Data) = 05 ">Maio </option>
+        <option value="WHERE MONTH(Data) = 06 ">Junho </option>
+        <option value="WHERE MONTH(Data) = 07 ">Julho </option>
+        <option value="WHERE MONTH(Data) = 08 ">Agosto </option>
+        <option value="WHERE MONTH(Data) = 09 ">Setembro </option>
+        <option value="WHERE MONTH(Data) = 10 ">Outubro </option>
+        <option value="WHERE MONTH(Data) = 11 ">Novembro </option>
+        <option value="WHERE MONTH(Data) = 12 ">Dezembro </option>
       </select><br>
-      <button type="submit" class="btn btn-outline-dark ">Gerar Relatório</button>
+      <button type="submit"  class="btn btn-outline-dark ">Gerar Relatório</button>
     </form>
 </div>
 </div>

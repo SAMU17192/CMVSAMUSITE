@@ -27,7 +27,7 @@ $(document).ready(function(){
 					acumul += '<td>'+ data[i].Estoque + '</td>';
 					acumul += '<td>'+ data[i].NumeroNota + '</td>';
 					acumul += '<td>'+ data[i].LocalCompra + '</td>';
-					acumul += '<td>'+ data[i].Data + '</td>';
+					acumul += '<td>'+ data[i].dataform + '</td>';
 					acumul += '</tr>';
 
 		        }

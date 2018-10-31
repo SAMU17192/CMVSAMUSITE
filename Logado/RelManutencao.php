@@ -4,7 +4,7 @@ include_once"Codigo.php";
 
 //estrutura do pdf
 $html = '<link rel="stylesheet" type="text/css" href="css/bootstrap.css">';
-$html .= '<h1 style="text-align:center;"><b>Relatório de vendas</b></h1> <br>';
+$html .= '<h1 style="text-align:center;"><b>Controle de manutenção</b></h1> <br>';
 $html .= '<table class="table table-bordered " style="font-size: 12px;" >';
 $html .= '<thead>';
 $html .= '<tr class="bg-dark text-light">';

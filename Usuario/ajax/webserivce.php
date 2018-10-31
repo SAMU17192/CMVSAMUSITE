@@ -9,7 +9,7 @@
 			$texto = $_POST["filtro"];
 				// fazendo uma consulta de todos os clientes que o nome seja igual o texto digitado
 
-				$sql = "SELECT * FROM historicotroca WHERE NomeVeiculo LIKE '%$texto%'";
+				$sql = "SELECT *, DATE_FORMAT(Data, '%d/%m/%Y') as 'dataform' FROM historicotroca WHERE NomeVeiculo LIKE '%$texto%'";
 
 				$consulta = $conexao->query($sql);
 
@@ -19,7 +19,7 @@
 
 				if ($retorno > 0) {
 					for ($i = 0; $i < count($dados); $i++) { 
-						$vetor[] = array_map("utf8_encode", $dados[$i]);
+						$vetor[] = $dados[$i];
 					}
 					echo json_encode($vetor);
 				}

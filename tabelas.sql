@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 08-Out-2018 às 14:27
+-- Generation Time: 18-Out-2018 às 17:56
 -- Versão do servidor: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `cmvsamu`
 --
-CREATE DATABASE IF NOT EXISTS `cmvsamu` DEFAULT CHARACTER SET utf8 COLLATE utf8_swedish_ci;
-USE `cmvsamu`;
 
 -- --------------------------------------------------------
 
